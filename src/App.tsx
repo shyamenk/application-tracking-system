@@ -1,5 +1,13 @@
+import React from "react";
+import "./index.css";
+import Layout from "./components/shared/Layout";
+
 function App() {
-  return <div>APLLICATION TRACKING SYSTEM</div>;
+  return (
+    <React.StrictMode>
+      <Layout />
+    </React.StrictMode>
+  );
 }
 
 export default App;
