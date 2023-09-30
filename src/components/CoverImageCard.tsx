@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import { Card } from "antd";
 import ImageUpload from "./ui/ImageUpload";
 
-const CoverImageCard: React.FC = () => (
+const CoverImageCard: FC = () => (
   <div className="max-w-lg mt-10">
     <Card
       headStyle={{ background: "#D0F7FA", color: "black" }}

@@ -1,54 +1,23 @@
-import { Card, Input, Checkbox, Switch, Divider, Button } from "antd";
+import React from "react";
+import { Card, Divider, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import ToggleField from "./ui/ToggleField";
+import AddButton from "./ui/AddButton";
 
-const ProfileCard = () => {
+const ProfileCard: React.FC = () => {
   return (
     <div className="max-w-lg mt-10">
       <Card
         headStyle={{ background: "#D0F7FA", color: "black" }}
         title="Profile"
       >
-        <div className="mb-4 flex items-center">
-          <label className="block text-sm font-medium ">Education</label>
-          <div className="ml-auto flex items-center gap-4">
-            <Checkbox id="phone" />
-            <label className="block text-sm font-medium">Mandatory</label>
-            <Switch size="small" id="showHidePhone" />
-            <label className="block text-sm font-medium ml-2">Hide</label>
-          </div>
-        </div>
+        <ToggleField label="Education" id="education" subLabel="Mandatory" />
         <Divider />
-        <div className="mb-4 flex items-center">
-          <label className="block text-sm font-medium">Experience</label>
-          <div className="ml-auto flex items-center gap-4">
-            <Checkbox id="phone" />
-            <label className="block text-sm font-medium">Mandatory</label>
-            <Switch size="small" id="showHidePhone" />
-            <label className="block text-sm font-medium ml-2">Hide</label>
-          </div>
-        </div>
+        <ToggleField label="Experience" id="experience" subLabel="Mandatory" />
         <Divider />
-        <div className="mb-4 flex items-center">
-          <label className="block text-sm font-medium">Resume</label>
-          <div className="ml-auto flex items-center gap-4">
-            <Checkbox id="phone" />
-            <label className="block text-sm font-medium">Mandatory</label>
-            <Switch size="small" id="showHidePhone" />
-            <label className="block text-sm font-medium ml-2">Hide</label>
-          </div>
-        </div>
+        <ToggleField label="Resume" id="resume" subLabel="Mandatory" />
         <Divider />
-        <Divider />
-        <div className="mb-4 flex items-center gap-4">
-          <Button
-            type="primary"
-            shape="circle"
-            icon={<PlusOutlined />}
-            size={"small"}
-            className="bg-white text-black font-extrabold"
-          />
-          <label className="block text-sm font-medium">Add a question</label>
-        </div>
+        <AddButton />
       </Card>
     </div>
   );

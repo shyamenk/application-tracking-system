@@ -1,5 +1,8 @@
 import { Card, Input, Checkbox, Switch, Divider, Button } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
+import InputField from "./ui/InputField";
+import ToggleField from "./ui/ToggleField";
+import AddButton from "./ui/AddButton";
 
 const inputStyle = {
   border: "none",
@@ -18,92 +21,23 @@ const PersonalInfoCard = () => {
         headStyle={{ background: "#D0F7FA", color: "black" }}
         title="Personal Information"
       >
-        <div className="mb-4">
-          <Input id="firstName" placeholder="First Name" style={inputStyle} />
-        </div>
+        <InputField id="firstName" placeholder="First Name" />
+        <InputField id="lastName" placeholder="Last Name" />
+        <InputField id="email" placeholder="Email" />
 
-        <div className="mb-4">
-          <Input id="lastName" placeholder="Last Name" style={inputStyle} />
-        </div>
-
-        <div className="mb-6">
-          <Input id="email" placeholder="Email" style={inputStyle} />
-        </div>
-
-        <div className="mb-4 flex items-center">
-          <label className="block text-sm font-medium ">Phone</label>
-          <div className="ml-auto flex items-center gap-4">
-            <Checkbox id="phone" />
-            <label className="block text-sm font-medium">Internal</label>
-            <Switch size="small" id="showHidePhone" />
-            <label className="block text-sm font-medium ml-2">Hide</label>
-          </div>
-        </div>
+        <ToggleField label="Phone" id="phone" />
         <Divider />
-        <div className="mb-4 flex items-center">
-          <label className="block text-sm font-medium">Nationality</label>
-          <div className="ml-auto flex items-center gap-4">
-            <Checkbox id="phone" />
-            <label className="block text-sm font-medium">Internal</label>
-            <Switch size="small" id="showHidePhone" />
-            <label className="block text-sm font-medium ml-2">Hide</label>
-          </div>
-        </div>
+        <ToggleField label="Nationality" id="nationality" />
         <Divider />
-        <div className="mb-4 flex items-center">
-          <label className="block text-sm font-medium">Current Residence</label>
-          <div className="ml-auto flex items-center gap-4">
-            <Checkbox id="phone" />
-            <label className="block text-sm font-medium">Internal</label>
-            <Switch size="small" id="showHidePhone" />
-            <label className="block text-sm font-medium ml-2">Hide</label>
-          </div>
-        </div>
+        <ToggleField label="Current Residence" id="currentResidence" />
         <Divider />
-        <div className="mb-4 flex items-center">
-          <label className="block text-sm font-medium">ID Number</label>
-          <div className="ml-auto flex items-center gap-4">
-            <Checkbox id="phone" />
-            <label className="block text-sm font-medium">Internal</label>
-            <Switch size="small" id="showHidePhone" />
-            <label className="block text-sm font-medium ml-2">Hide</label>
-          </div>
-        </div>
+        <ToggleField label="ID Number" id="idNumber" />
         <Divider />
-
-        <div className="mb-4 flex items-center">
-          <label className="block text-sm font-medium">Date Of Birth</label>
-          <div className="ml-auto flex items-center gap-4">
-            <Checkbox id="phone" />
-            <label className="block text-sm font-medium">Internal</label>
-            <Switch size="small" id="showHidePhone" />
-            <label className="block text-sm font-medium ml-2">Hide</label>
-          </div>
-        </div>
+        <ToggleField label="Date Of Birth" id="dateOfBirth" />
         <Divider />
-
-        <div className="mb-4 flex items-center">
-          <label className="block text-sm font-medium">Gender</label>
-          <div className="ml-auto flex items-center gap-4">
-            <Checkbox id="phone" />
-            <label className="block text-sm font-medium">Internal</label>
-            <Switch size="small" id="showHidePhone" />
-            <label className="block text-sm font-medium ml-2">Hide</label>
-          </div>
-        </div>
+        <ToggleField label="Gender" id="gender" />
         <Divider />
-
-        <div className="mb-4 flex items-center gap-4">
-          <Button
-            type="primary"
-            shape="circle"
-            icon={<PlusOutlined />}
-            size={"small"}
-            className="bg-white text-black font-extrabold"
-          />
-          {/* <Button type="default" icon={<PlusOutlined />}></Button> */}
-          <label className="block text-sm font-medium">Add a question</label>
-        </div>
+        <AddButton />
       </Card>
     </div>
   );
