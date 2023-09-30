@@ -6,13 +6,3 @@
     color: black !important;
     font-weight: 500;
 }
-
-.ant-checkbox-checked .ant-checkbox-inner {
-    background-color: #087B2F !important;
-    border-color: #087B2F !important;
-  }
-
-  .ant-switch-checked .ant-switch-inner{
-    background-color: #087B2F !important;
-    border-color: #087B2F !important;
-  }

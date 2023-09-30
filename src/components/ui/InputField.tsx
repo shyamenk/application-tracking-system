@@ -1,3 +1,4 @@
+import React from "react";
 import { Input } from "antd";
 
 const inputStyle: React.CSSProperties = {
@@ -12,13 +13,36 @@ const inputStyle: React.CSSProperties = {
 
 interface InputFieldProps {
   id: string;
-  placeholder: string;
+  placeholder?: string;
+  value?: string;
+  onChange?: (value: string) => void;
+  className?: string;
 }
 
-const InputField: React.FC<InputFieldProps> = ({ id, placeholder }) => (
-  <div className="mb-4">
-    <Input id={id} placeholder={placeholder} style={inputStyle} />
-  </div>
-);
+const InputField: React.FC<InputFieldProps> = ({
+  id,
+  placeholder = "",
+  value,
+  onChange,
+  className,
+}) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(e.target.value);
+    }
+  };
+
+  return (
+    <div className={`mb-4 ${className}`}>
+      <Input
+        id={id}
+        placeholder={placeholder}
+        style={inputStyle}
+        value={value}
+        onChange={handleInputChange}
+      />
+    </div>
+  );
+};
 
 export default InputField;

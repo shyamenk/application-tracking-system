@@ -5,13 +5,13 @@ const AddButton = () => {
   return (
     <div className="mb-4 flex items-center gap-4">
       <Button
-        type="primary"
-        shape="circle"
+        type="link"
         icon={<PlusOutlined />}
         size={"small"}
-        className="bg-white text-black font-extrabold"
-      />
-      <label className="block text-sm font-medium">Add a question</label>
+        className="bg-white text-black font-extrabold hover:text-black!important"
+      >
+        Add a question
+      </Button>
     </div>
   );
 };

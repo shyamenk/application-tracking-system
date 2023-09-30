@@ -2,7 +2,7 @@ import { Home, FileText, Menu } from "lucide-react";
 
 const SideBar = () => {
   return (
-    <aside className="flex h-screen w-16 flex-col items-center overflow-y-auto border-r bg-white ">
+    <aside className=" h-screen w-20 pt-10 flex-col items-center overflow-y-auto border-r bg-white ">
       <nav className="flex flex-1 flex-col items-center space-y-6">
         <a href="#">
           <Menu size={28} />
