@@ -2,7 +2,10 @@ import { Home, ChevronRight } from "lucide-react";
 
 const TabMenu = () => {
   return (
-    <nav className="flex mt-10  h-20 bg-gray-200 px-6" aria-label="Breadcrumb">
+    <nav
+      className="flex mt-10  h-20 bg-white shadow-md px-6"
+      aria-label="Breadcrumb"
+    >
       <ol className="inline-flex items-center space-x-1 md:space-x-3">
         <li className="inline-flex items-center">
           <a

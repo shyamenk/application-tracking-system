@@ -87,7 +87,7 @@ const ProfileCard: React.FC = () => {
         <Divider />
         <AddButton onToggleQuestions={handleToggleQuestions} />
       </Card>
-      {isVisible && <QuestionsCard />}
+      {isVisible && <QuestionsCard questionCategory="profile" />}
     </div>
   );
 };

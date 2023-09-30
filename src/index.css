@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-::placeholder {
+/* ::placeholder {
     color: black !important;
     font-weight: 500;
-}
+} */

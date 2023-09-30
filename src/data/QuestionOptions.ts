@@ -5,11 +5,11 @@ export const questionOptions = [
   },
   {
     value: "shortAnswer",
-    label: "Short Answer",
+    label: "ShortAnswer",
   },
   {
     value: "yes/no",
-    label: "Yes/No",
+    label: "YesNo",
   },
   {
     value: "dropdown",
@@ -17,7 +17,7 @@ export const questionOptions = [
   },
   {
     value: "multipleChoice",
-    label: "Multiple Choice",
+    label: "MultipleChoice",
   },
   {
     value: "date",
@@ -29,10 +29,10 @@ export const questionOptions = [
   },
   {
     value: "fileUpload",
-    label: "File Upload",
+    label: "FileUpload",
   },
   {
     value: "videoQuestions",
-    label: "Video Question",
+    label: "VideoQuestions",
   },
 ];

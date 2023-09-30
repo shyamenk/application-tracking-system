@@ -14,53 +14,18 @@ const PersonalInfoCard = () => {
     setIsVisible(!isVisible);
   };
 
-  console.log(state);
-
   return (
     <div className="max-w-lg mt-10">
       <Card
         headStyle={{ background: "#D0F7FA", color: "black" }}
         title="Personal Information"
       >
-        <InputField
-          id="firstName"
-          placeholder="First Name"
-          value={state.personalInformation.firstName.value}
-          onChange={(value) =>
-            updatePersonalInfo({
-              firstName: {
-                ...state.personalInformation.firstName,
-                value,
-              },
-            })
-          }
-        />
-        <InputField
-          id="lastName"
-          placeholder="Last Name"
-          value={state.personalInformation.lastName.value}
-          onChange={(value) =>
-            updatePersonalInfo({
-              lastName: {
-                ...state.personalInformation.lastName,
-                value,
-              },
-            })
-          }
-        />
-        <InputField
-          id="email"
-          placeholder="Email"
-          value={state.personalInformation.emailId.value}
-          onChange={(value) =>
-            updatePersonalInfo({
-              emailId: {
-                ...state.personalInformation.emailId,
-                value,
-              },
-            })
-          }
-        />
+        <label className="block text-sm font-medium mb-4">First Name</label>
+        <Divider />
+        <label className="block text-sm font-medium mb-4">Last Name</label>
+        <Divider />
+        <label className="block text-sm font-medium mb-4">Email</label>
+        <Divider />
 
         <ToggleField
           label="Phone"
@@ -83,7 +48,6 @@ const PersonalInfoCard = () => {
           }}
         />
         <Divider />
-
         <ToggleField
           label="Nationality"
           id="nationality"
@@ -146,7 +110,6 @@ const PersonalInfoCard = () => {
             });
           }}
         />
-
         <Divider />
         <ToggleField
           label="Date Of Birth"
@@ -168,7 +131,6 @@ const PersonalInfoCard = () => {
             });
           }}
         />
-
         <Divider />
         <ToggleField
           label="Gender"
@@ -193,7 +155,7 @@ const PersonalInfoCard = () => {
         <Divider />
         <AddButton onToggleQuestions={handleToggleQuestions} />
       </Card>
-      {isVisible && <QuestionsCard />}
+      {isVisible && <QuestionsCard questionCategory="personal" />}
     </div>
   );
 };

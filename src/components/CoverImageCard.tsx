@@ -21,8 +21,6 @@ const CoverImageCard: FC = () => {
     setCoverImage("");
   };
 
-  console.log(state);
-
   return (
     <div className="max-w-lg mt-10">
       <Card
