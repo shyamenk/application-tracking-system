@@ -1,7 +1,7 @@
 import CoverImageCard from "../CoverImageCard";
+import FormSubmit from "../FormSubmit";
 import PersonalInfoCard from "../PersonalCard";
 import ProfileCard from "../ProfileCard";
-import QuestionsCard from "../QuestionsCard";
 import SideBar from "./SideBar";
 import TabMenu from "./Tab";
 
@@ -15,7 +15,7 @@ const Layout = () => {
           <CoverImageCard />
           <PersonalInfoCard />
           <ProfileCard />
-          <QuestionsCard />
+          <FormSubmit />
         </div>
       </div>
     </>

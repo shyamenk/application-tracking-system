@@ -14,9 +14,10 @@ export interface PersonalInformation {
   idNumber: PersonalInformationField;
   dateOfBirth: PersonalInformationField;
   gender: PersonalInformationField;
+  personalQuestions: QuestionTemplate[]; // Added personalQuestions field
 }
 
-interface ProfileTemplate {
+export interface ProfileTemplate {
   mandatory: boolean;
   show: boolean;
 }
@@ -57,5 +58,5 @@ export type FormAction =
         resume: ProfileTemplate;
       }>;
     }
-  | { type: "ADD_CUSTOMISED_QUESTION"; payload: QuestionTemplate } // Use QuestionTemplate as payload type
+  | { type: "ADD_CUSTOMISED_QUESTION"; payload: QuestionTemplate }
   | { type: "REMOVE_CUSTOMISED_QUESTION"; payload: string };

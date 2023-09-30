@@ -2,22 +2,26 @@ import React, { FC, useState } from "react";
 import { Button, Card } from "antd";
 import ImageUpload from "./ui/ImageUpload";
 import { CloseOutlined } from "@ant-design/icons";
+import { useFormContext } from "./context/FormContext";
 
 const CoverImageCard: FC = () => {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const { state, setCoverImage } = useFormContext();
 
   const handleImageSelect = (file: File | null) => {
     if (file) {
       const imageUrl = URL.createObjectURL(file);
-      setSelectedImage(imageUrl);
+
+      setCoverImage(imageUrl);
     } else {
-      setSelectedImage(null);
+      setCoverImage("");
     }
   };
 
   const resetHandler = () => {
-    setSelectedImage(null);
+    setCoverImage("");
   };
+
+  console.log(state);
 
   return (
     <div className="max-w-lg mt-10">
@@ -26,11 +30,11 @@ const CoverImageCard: FC = () => {
         headStyle={{ background: "#D0F7FA", color: "black" }}
         title="Upload Cover Image"
       >
-        {selectedImage ? (
+        {state.coverImage ? (
           <>
             <div>
               <img
-                src={selectedImage}
+                src={state.coverImage}
                 alt="Uploaded Cover Image"
                 style={{ width: "100%", height: "auto" }}
                 className="rounded-b-lg"

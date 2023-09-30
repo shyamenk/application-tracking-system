@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Divider } from "antd";
 import ToggleField from "./ui/ToggleField";
 import AddButton from "./ui/AddButton";
-import useForm from "../hooks/useForm";
+import QuestionsCard from "./QuestionsCard";
+import { useFormContext } from "./context/FormContext";
 
 const ProfileCard: React.FC = () => {
-  const { state, updateProfile } = useForm();
+  const { state, updateProfile } = useFormContext();
+  const [isVisible, setIsVisible] = useState(false);
 
-  console.log(state);
+  const handleToggleQuestions = () => {
+    setIsVisible(!isVisible);
+  };
 
   return (
     <div className="max-w-lg mt-10">
@@ -81,8 +85,9 @@ const ProfileCard: React.FC = () => {
           }}
         />
         <Divider />
-        <AddButton />
+        <AddButton onToggleQuestions={handleToggleQuestions} />
       </Card>
+      {isVisible && <QuestionsCard />}
     </div>
   );
 };

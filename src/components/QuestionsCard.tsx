@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import { questionOptions } from "../data/QuestionOptions";
 import { Button, Card, Input } from "antd";
 import SelectInput from "./ui/Select";
+import ParagraphQuestion from "../questions/ParagraphQuestion";
+import { useFormContext } from "./context/FormContext";
 
 const QuestionsCard: React.FC = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [questions, setQuestions] = useState<string[]>([]);
   const [newQuestion, setNewQuestion] = useState<string>("");
+  const { state, addCustomisedQuestion } = useFormContext();
 
   const handleOptionChange = (value: string | null) => {
     setSelectedOption(value);
@@ -33,18 +36,7 @@ const QuestionsCard: React.FC = () => {
             onChange={handleOptionChange}
           />
           {selectedOption === "paragraph" && (
-            <div className="mb-4">
-              <label className="block text-sm font-medium mb-2 pl-1">
-                Question
-              </label>
-              <Input
-                style={{ width: 450 }}
-                type="text"
-                size="large"
-                placeholder="Enter a paragraph question"
-                value={newQuestion}
-              />
-            </div>
+            <ParagraphQuestion newQuestion={newQuestion} />
           )}
 
           {selectedOption === "multipleChoice" && (

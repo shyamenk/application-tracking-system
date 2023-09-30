@@ -1,11 +1,18 @@
 import { Card, Divider } from "antd";
 import InputField from "./ui/InputField";
 import AddButton from "./ui/AddButton";
-import useForm from "../hooks/useForm";
 import ToggleField from "./ui/ToggleField";
+import { useState } from "react";
+import QuestionsCard from "./QuestionsCard";
+import { useFormContext } from "./context/FormContext";
 
 const PersonalInfoCard = () => {
-  const { state, updatePersonalInfo } = useForm();
+  const { state, updatePersonalInfo } = useFormContext();
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleToggleQuestions = () => {
+    setIsVisible(!isVisible);
+  };
 
   console.log(state);
 
@@ -184,8 +191,9 @@ const PersonalInfoCard = () => {
           }}
         />
         <Divider />
-        <AddButton />
+        <AddButton onToggleQuestions={handleToggleQuestions} />
       </Card>
+      {isVisible && <QuestionsCard />}
     </div>
   );
 };
