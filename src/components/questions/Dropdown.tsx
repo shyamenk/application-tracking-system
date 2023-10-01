@@ -1,65 +1,25 @@
 import { Button, Input, Checkbox } from "antd";
-import { useState } from "react";
-import { useFormContext } from "../components/context/FormContext";
 import { PlusOutlined, UnorderedListOutlined } from "@ant-design/icons";
+import useQuestionState from "../../hooks/useQuestions";
 
 type Props = {
   questionCategory: string;
 };
 
-const MultipleChoiceQuestion = ({ questionCategory }: Props) => {
-  const [newQuestion, setNewQuestion] = useState<string>("");
-  const [choices, setChoices] = useState<string[]>([""]);
-  const [enableOther, setEnableOther] = useState(false);
-  const [maxChoice, setMaxChoice] = useState<number | undefined>(undefined);
-  const { state, updatePersonalInfo, updateProfile, addCustomisedQuestion } =
-    useFormContext();
-
-  console.log(state);
-
-  const handleSaveQuestion = () => {
-    if (newQuestion.trim() !== "") {
-      const question = {
-        id: "unique-id",
-        type: "multipleChoice",
-        question: newQuestion,
-        choices: choices.filter((choice) => choice.trim() !== ""),
-        maxChoice: maxChoice || 0,
-        disqualify: false,
-        other: enableOther,
-      };
-
-      if (questionCategory === "personal") {
-        updatePersonalInfo({
-          personalQuestions: [
-            ...state.personalInformation.personalQuestions,
-            question,
-          ],
-        });
-      } else if (questionCategory === "profile") {
-        updateProfile({
-          profileQuestions: [...state.profile.profileQuestions, question],
-        });
-      } else {
-        addCustomisedQuestion(question);
-      }
-
-      setNewQuestion("");
-      setChoices([""]);
-      setEnableOther(false);
-      setMaxChoice(undefined);
-    }
-  };
-
-  const handleAddChoice = () => {
-    setChoices([...choices, ""]);
-  };
-
-  const handleChoiceChange = (index: number, choice: string) => {
-    const updatedChoices = [...choices];
-    updatedChoices[index] = choice;
-    setChoices(updatedChoices);
-  };
+const DropdownQuestion = ({ questionCategory }: Props) => {
+  const {
+    newQuestion,
+    setNewQuestion,
+    choices,
+    handleAddChoice,
+    handleChoiceChange,
+    enableOther,
+    setEnableOther,
+    maxChoice,
+    setMaxChoice,
+    // clearQuestionState,
+    saveQuestion,
+  } = useQuestionState(questionCategory);
 
   return (
     <div className="mb-4">
@@ -105,7 +65,7 @@ const MultipleChoiceQuestion = ({ questionCategory }: Props) => {
           Enable "Other" Option
         </Checkbox>
       </div>
-      <div className="mt-4">
+      {/* <div className="mt-4">
         <label className="block text-sm font-medium mb-2 pl-1">
           Max choice allowed
         </label>
@@ -117,7 +77,7 @@ const MultipleChoiceQuestion = ({ questionCategory }: Props) => {
           value={maxChoice}
           onChange={(e) => setMaxChoice(parseInt(e.target.value))}
         />
-      </div>
+      </div> */}
       <div className="flex items-center gap-2 mt-6">
         <Button
           type="link"
@@ -129,7 +89,7 @@ const MultipleChoiceQuestion = ({ questionCategory }: Props) => {
           <Button
             type="primary"
             className="font-bold bg-[#087B2C]"
-            onClick={handleSaveQuestion}
+            onClick={() => saveQuestion("dropdown")}
           >
             Save
           </Button>
@@ -139,4 +99,4 @@ const MultipleChoiceQuestion = ({ questionCategory }: Props) => {
   );
 };
 
-export default MultipleChoiceQuestion;
+export default DropdownQuestion;

@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import { questionOptions } from "../data/QuestionOptions";
 import { Card } from "antd";
 import SelectInput from "./ui/Select";
-import ParagraphQuestion from "../questions/ParagraphQuestion";
-import MultipleChoice from "../questions/MultipleChoice";
+import ParagraphQuestion from "./questions/ParagraphQuestion";
+import MultipleChoice from "./questions/MultipleChoice";
 import { FormState } from "../types/formType";
+import DropdownQuestion from "./questions/Dropdown";
 
 type Props = {
   questionCategory: string;
@@ -50,6 +51,9 @@ const QuestionsCard = ({ questionCategory }: Props) => {
           )}
           {selectedOption === "multipleChoice" && (
             <MultipleChoice questionCategory={questionCategory} />
+          )}
+          {selectedOption === "dropdown" && (
+            <DropdownQuestion questionCategory={questionCategory} />
           )}
         </Card>
       </div>

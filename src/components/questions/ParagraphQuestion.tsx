@@ -1,6 +1,6 @@
 import { Button, Input } from "antd";
 import { useState } from "react";
-import { useFormContext } from "../components/context/FormContext";
+import { useFormContext } from "../context/FormContext";
 
 type Props = {
   questionCategory: string;
@@ -58,7 +58,7 @@ const ParagraphQuestion = ({ questionCategory }: Props) => {
         style={{ width: 450 }}
         type="text"
         size="large"
-        placeholder="Enter a paragraph question"
+        placeholder="Type here"
         value={newQuestion}
         onChange={(e) => setNewQuestion(e.target.value)}
       />
