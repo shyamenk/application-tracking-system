@@ -6,6 +6,7 @@ const useQuestionState = (questionCategory: string) => {
   const [choices, setChoices] = useState<string[]>([""]);
   const [enableOther, setEnableOther] = useState(false);
   const [maxChoice, setMaxChoice] = useState<number | undefined>(undefined);
+  const [disqualify, setdisqualify] = useState(false);
 
   const { state, updatePersonalInfo, updateProfile, addCustomisedQuestion } =
     useFormContext();
@@ -36,7 +37,7 @@ const useQuestionState = (questionCategory: string) => {
         question: newQuestion,
         choices: choices.filter((choice) => choice.trim() !== ""),
         maxChoice: maxChoice || 0,
-        disqualify: false,
+        disqualify: disqualify,
         other: enableOther,
       };
 
@@ -65,6 +66,8 @@ const useQuestionState = (questionCategory: string) => {
     choices,
     handleAddChoice,
     handleChoiceChange,
+    disqualify,
+    setdisqualify,
     enableOther,
     setEnableOther,
     maxChoice,

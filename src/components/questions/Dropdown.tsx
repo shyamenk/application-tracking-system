@@ -2,11 +2,16 @@ import { Button, Input, Checkbox } from "antd";
 import { PlusOutlined, UnorderedListOutlined } from "@ant-design/icons";
 import useQuestionState from "../../hooks/useQuestions";
 
+interface Question {
+  type: string;
+  question: string;
+}
+
 type Props = {
   questionCategory: string;
+  onSave: (newQuestion: Question) => void;
 };
-
-const DropdownQuestion = ({ questionCategory }: Props) => {
+const DropdownQuestion = ({ questionCategory, onSave }: Props) => {
   const {
     newQuestion,
     setNewQuestion,
@@ -15,11 +20,17 @@ const DropdownQuestion = ({ questionCategory }: Props) => {
     handleChoiceChange,
     enableOther,
     setEnableOther,
-    maxChoice,
-    setMaxChoice,
-    // clearQuestionState,
     saveQuestion,
   } = useQuestionState(questionCategory);
+
+  const saveQuestionHandler = () => {
+    const questionTemplate: Question = {
+      type: "dropdown",
+      question: newQuestion,
+    };
+    saveQuestion("dropdown");
+    onSave(questionTemplate);
+  };
 
   return (
     <div className="mb-4">
@@ -89,7 +100,7 @@ const DropdownQuestion = ({ questionCategory }: Props) => {
           <Button
             type="primary"
             className="font-bold bg-[#087B2C]"
-            onClick={() => saveQuestion("dropdown")}
+            onClick={saveQuestionHandler}
           >
             Save
           </Button>

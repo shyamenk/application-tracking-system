@@ -1,11 +1,15 @@
 import { Button } from "antd";
 import { useFormContext } from "./context/FormContext";
+import { transformFormData } from "../utils/transformFormData ";
+import { createForm } from "../api/createApplicationForm";
 
 const FormSubmit = () => {
   const { state } = useFormContext();
 
-  const submitHandler = () => {
-    console.log(state);
+  const submitHandler = async () => {
+    const transformedFormData = transformFormData(state);
+    const response = await createForm(transformedFormData);
+    console.log(response);
   };
 
   const buttonStyle = {

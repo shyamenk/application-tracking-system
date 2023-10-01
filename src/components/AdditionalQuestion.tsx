@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { questionOptions } from "../data/QuestionOptions";
 import { Button, Card } from "antd";
 import SelectInput from "./ui/Select";
@@ -19,11 +19,13 @@ interface Question {
   question: string;
 }
 
-const QuestionsCard = ({ questionCategory }: Props) => {
+const AdditionalQuestionCard = ({ questionCategory }: Props) => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
+
   const [questions, setQuestions] = useState<Question[]>([]);
 
   const { state } = useFormContext();
+  console.log(state);
 
   useEffect(() => {
     if (state.personalInformation) {
@@ -48,8 +50,8 @@ const QuestionsCard = ({ questionCategory }: Props) => {
     <div className="max-w-lg mt-10">
       <div className="mb-4">
         <Card
-          headStyle={{ background: "#D0F7FA", color: "black", fontSize: "600" }}
-          title="Questions"
+          headStyle={{ background: "#D0F7FA", color: "black" }}
+          title="Additional Questions"
         >
           {questions.map((question: Question, index: number) => (
             <div key={index} className="mb-4">
@@ -64,7 +66,6 @@ const QuestionsCard = ({ questionCategory }: Props) => {
               </div>
             </div>
           ))}
-
           <SelectInput
             title="Questions"
             options={questionOptions}
@@ -101,4 +102,4 @@ const QuestionsCard = ({ questionCategory }: Props) => {
   );
 };
 
-export default QuestionsCard;
+export default AdditionalQuestionCard;

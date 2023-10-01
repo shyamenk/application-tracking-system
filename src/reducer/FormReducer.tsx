@@ -6,47 +6,38 @@ export const initialFormState: FormState = {
     firstName: {
       internalUse: false,
       show: true,
-      value: "",
     },
     lastName: {
       internalUse: false,
       show: true,
-      value: "",
     },
     emailId: {
       internalUse: false,
       show: true,
-      value: "",
     },
     phoneNumber: {
       internalUse: false,
       show: false,
-      value: "",
     },
     nationality: {
       internalUse: false,
       show: false,
-      value: "",
     },
     currentResidence: {
       internalUse: false,
       show: false,
-      value: "",
     },
     idNumber: {
       internalUse: false,
       show: false,
-      value: "",
     },
     dateOfBirth: {
       internalUse: false,
       show: false,
-      value: "",
     },
     gender: {
       internalUse: false,
       show: false,
-      value: "",
     },
     personalQuestions: [],
   },

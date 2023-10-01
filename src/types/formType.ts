@@ -1,7 +1,6 @@
-interface PersonalInformationField {
+export interface PersonalInformationField {
   internalUse: boolean;
   show: boolean;
-  value: string;
 }
 
 export interface PersonalInformation {
@@ -14,7 +13,7 @@ export interface PersonalInformation {
   idNumber: PersonalInformationField;
   dateOfBirth: PersonalInformationField;
   gender: PersonalInformationField;
-  personalQuestions: QuestionTemplate[]; // Added personalQuestions field
+  personalQuestions: QuestionTemplate[];
 }
 
 export interface ProfileTemplate {
@@ -35,6 +34,18 @@ export interface QuestionTemplate {
 export interface FormState {
   coverImage: string;
   personalInformation: PersonalInformation;
+  profile: {
+    education: ProfileTemplate;
+    experience: ProfileTemplate;
+    resume: ProfileTemplate;
+    profileQuestions: QuestionTemplate[];
+  };
+  customisedQuestions: QuestionTemplate[];
+}
+
+export interface Attributes {
+  coverImage: string;
+  personalInformation: Record<string, PersonalInformationField>;
   profile: {
     education: ProfileTemplate;
     experience: ProfileTemplate;

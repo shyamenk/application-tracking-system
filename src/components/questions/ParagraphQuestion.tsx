@@ -1,55 +1,28 @@
 import { Button, Input } from "antd";
-import { useState } from "react";
-import { useFormContext } from "../context/FormContext";
+import useQuestionState from "../../hooks/useQuestions";
+import { QuestionTemplate } from "../../types/formType";
 
 type Props = {
   questionCategory: string;
+  onSave: (newQuestion: Question) => void;
 };
 
-const ParagraphQuestion = ({ questionCategory }: Props) => {
-  const [newQuestion, setNewQuestion] = useState<string>("");
-  const { state, updatePersonalInfo, updateProfile } = useFormContext();
+interface Question {
+  type: string;
+  question: string;
+}
+const ParagraphQuestion = ({ questionCategory, onSave }: Props) => {
+  const { newQuestion, setNewQuestion, saveQuestion } =
+    useQuestionState(questionCategory);
 
-  const handleSaveQuestion = () => {
-    if (newQuestion.trim() !== "") {
-      if (questionCategory === "personal") {
-        updatePersonalInfo({
-          personalQuestions: [
-            ...state.personalInformation.personalQuestions,
-            {
-              id: "unique-id",
-              type: "paragraph",
-              question: newQuestion,
-              choices: [],
-              maxChoice: 0,
-              disqualify: false,
-              other: false,
-            },
-          ],
-        });
-      } else if (questionCategory === "profile") {
-        updateProfile({
-          profileQuestions: [
-            ...state.profile.profileQuestions,
-            {
-              id: "unique-id",
-              type: "paragraph",
-              question: newQuestion,
-              choices: [],
-              maxChoice: 0,
-              disqualify: false,
-              other: false,
-            },
-          ],
-        });
-      } else {
-        // Handle other categories
-      }
-
-      setNewQuestion("");
-    }
+  const saveQuestionHandler = () => {
+    const questionTemplate: Question = {
+      type: "paragraph",
+      question: newQuestion,
+    };
+    saveQuestion("paragraph");
+    onSave(questionTemplate);
   };
-  console.log(state);
 
   return (
     <div className="mb-4">
@@ -73,7 +46,7 @@ const ParagraphQuestion = ({ questionCategory }: Props) => {
           <Button
             type="primary"
             className="font-bold bg-[#087B2C]"
-            onClick={handleSaveQuestion}
+            onClick={saveQuestionHandler}
           >
             Save
           </Button>

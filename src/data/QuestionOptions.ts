@@ -8,7 +8,7 @@ export const questionOptions = [
     label: "ShortAnswer",
   },
   {
-    value: "yes/no",
+    value: "yesorno",
     label: "YesNo",
   },
   {

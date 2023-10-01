@@ -1,3 +1,4 @@
+import AdditionalQuestionCard from "../AdditionalQuestion";
 import CoverImageCard from "../CoverImageCard";
 import FormSubmit from "../FormSubmit";
 import PersonalInfoCard from "../PersonalCard";
@@ -15,6 +16,7 @@ const Layout = () => {
           <CoverImageCard />
           <PersonalInfoCard />
           <ProfileCard />
+          <AdditionalQuestionCard questionCategory="additional" />
           <FormSubmit />
         </div>
       </div>
